@@ -73,10 +73,10 @@ random_forest.fit(X_train, Y_train)
 # #######################################################################################################################
 
 # 0. Créate sidebar
-st.sidebar.image(img_personne, caption="Votre humble créateur de l'application")
+st.sidebar.image(img_personne, caption="Votre humble créateur de l'application", width=200)
 st.sidebar.write("[Lien vers le GitHub du créateur](https://github.com/mjacoupy)")
 st.sidebar.markdown("Cette application est basée sur un modèle de Machine Learning !")
-st.sidebar.markdown("Elle utilise un modèle de classification par Random Forest entrainé avec le légendaire jeu de données 'Titanic Survivor' de Kaggle.") 
+st.sidebar.markdown("Elle utilise un modèle de classification par Random Forest entrainé avec le légendaire jeu de données 'Titanic Survivor' de Kaggle.")
 st.sidebar.markdown("Ce modèle a un taux de bonne prédiction de 82,5% lorsqu'il s'agissait de prédire si une personne aurait réussi à monter sur un canot de sauvetage ou se serait noyé dans l'océan.")
 st.sidebar.markdown("J'espère que cela vous plaira et n'oubliez pas : **Les femmes et les enfants d'abord !**")
 
