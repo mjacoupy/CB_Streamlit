@@ -75,7 +75,7 @@ random_forest.fit(X_train, Y_train)
 # 0. Créate sidebar
 st.sidebar.image(img_personne, caption="Votre humble créateur de l'application")
 st.sidebar.write("[Lien vers le GitHub du créateur](https://github.com/mjacoupy)")
-st.sidebar.markdown("Cette application fonctionne sur du Machine Learning !")
+st.sidebar.markdown("Cette application est basée sur un modèle de Machine Learning !")
 st.sidebar.markdown("Elle utilise un modèle de classification par Random Forest entrainé avec le légendaire jeu de données 'Titanic Survivor' de Kaggle.") 
 st.sidebar.markdown("Ce modèle a un taux de bonne prédiction de 82,5% lorsqu'il s'agissait de prédire si une personne aurait réussi à monter sur un canot de sauvetage ou se serait noyé dans l'océan.")
 st.sidebar.markdown("J'espère que cela vous plaira et n'oubliez pas : **Les femmes et les enfants d'abord !**")
@@ -88,19 +88,19 @@ st.image(img_titanic)
 # #######################################################################################################################
 
 # 2. Affiche le titre
-st.title("Survivrez vous au Titanic ?")
+st.title("Survivrez-vous au Titanic ?")
 
 # #######################################################################################################################
 
 # 3. Entrer le nom
-name = st.text_input("Quel est votre nom")
+name = st.text_input("Quel est votre nom ?")
 st.markdown("""---""")
 
 # #######################################################################################################################
 
 # BONUS
 
-# Bonus 1. Drag and drop photo 
+# Bonus 1. Drag and drop photo
 data = st.file_uploader("Ajouter une photo du passager", type=["png", "jpg", "jpeg"])
 
 
@@ -125,7 +125,7 @@ if data:
         st.image(resized)
 
 # Bonus 3. Estime age et genre
-    analyse = DeepFace.analyze(out_file, actions = ['age', 'gender'])
+    analyse = DeepFace.analyze(out_file, actions=['age', 'gender'])
     age = analyse['age']
     genre = analyse['gender']
     with col2:
@@ -173,7 +173,7 @@ if age is None:
 # #######################################################################################################################
 
 # 6. Selectionner la classe
-Class = st.selectbox("Dans quelle classe étiez vous lors de votre dernier voyage ?", ['Affaire', 'Business', 'Economique'], index=0)
+Class = st.selectbox("Dans quelle classe étiez-vous lors de votre dernier voyage ?", ['Affaire', 'Business', 'Economique'], index=0)
 c = 0
 if Class == "Affaire":
     c = 1
@@ -186,7 +186,7 @@ st.markdown("""---""")
 # #######################################################################################################################
 
 # 7.1 Etes vous mariés
-celib = st.radio("Etes vous célibataire ?", ['Oui', 'Non'])
+celib = st.radio("Etes-vous célibataire ?", ['Oui', 'Non'])
 if celib == "Oui":
     m = 0
 else:
@@ -202,7 +202,7 @@ st.markdown("""---""")
 # #######################################################################################################################
 
 # 9. Est ce que vous voyager avec vos enfants ? Si oui combien ?
-enfants = st.radio("Avez vous des enfants ?", ["Non", "Oui"], index=0)
+enfants = st.radio("Avez-vous des enfants ?", ["Non", "Oui"], index=0)
 if enfants == 'Oui':
     nb_enfants = st.number_input("Combien voyagent avec vous ?", step=1, min_value=0) 
 else:
@@ -212,7 +212,7 @@ st.markdown("""---""")
 # #######################################################################################################################
 
 # 10. D'ou etes vous partis ? 
-Port = st.selectbox("D'où partez vous ?", ["France", "Nord du Royaume-Uni", "Sud du Royaume-Uni"])
+Port = st.selectbox("D'où souhaitez-vous partir ?", ["France", "Nord du Royaume-Uni", "Sud du Royaume-Uni"])
 if Port == "France":
     p = 1
 elif Port == "Nord du Royaume-Uni":
@@ -224,7 +224,7 @@ st.markdown("""---""")
 # #######################################################################################################################
 
 # 11. Generalement est ce que vous achetez vos billets en avance ou au dernier moment ?
-Quand = st.radio("Quand achetez vous généralement vos billets ?", ["Dés que possible", "Quelques semaines avant le depart", "Au dernier moment"])
+Quand = st.radio("Quand achetez-vous généralement vos billets ?", ["Dés que possible", "Quelques semaines avant le depart", "Au dernier moment"])
 if Quand == "Dés que possible":
     f = X_train.loc[X_train['Pclass'] == c]['Fare'].quantile([0.25])
 elif Quand == "Quelques semaines avant le depart":
@@ -243,10 +243,10 @@ if name and button:
         pred = random_forest.predict(dataframe)[0]
         
         if pred == 0:
-            st.error("Désolé, "+name+", vous n'auriez pas survécu au naufrage du titanic")
+            st.error("Désolé, "+name+", vous n'auriez probablement pas survécu au naufrage du titanic")
             st.image(img_jack)
         elif pred == 1:
-            st.success("Vous avez de la chance "+name+", vous auriez survecu au naufrage du titanic")
+            st.success("Vous avez de la chance "+name+", vous auriez probablement survecu au naufrage du titanic")
             st.image(img_rose)
             st.balloons()
     except Exception as e:
