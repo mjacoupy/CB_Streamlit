@@ -105,7 +105,6 @@ data = st.file_uploader("Ajouter une photo du passager", type=["png", "jpg", "jp
 
 
 if data:
-    image = Image.open(data)
     pil_image = Image.open(data).convert('RGB')
     open_cv_image = np.array(pil_image)
     image = cv2.cvtColor(open_cv_image[:, :, ::-1], cv2.COLOR_BGR2RGB)
