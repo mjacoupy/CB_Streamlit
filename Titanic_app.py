@@ -139,7 +139,7 @@ if data:
 st.markdown("""---""")
 # #######################################################################################################################
 
-# 4. Choisir le genre 
+# 4. Choisir le genre
 if genre is None:
     col1, col2, col3 = st.columns(3)
         
@@ -159,12 +159,12 @@ if genre is None:
         st.image(img_autre)
         other = st.checkbox("Non binaire")
         if other:
-            s = 0.5       
+            s = 0.5
     st.markdown("""---""")
 
 # #######################################################################################################################
 
-# 5. Selectionner l'age 
+# 5. Selectionner l'age
 if age is None:
     age = st.number_input("Quel est votre age ?", step=1, min_value=1, max_value=120, value=20)
     st.markdown("""---""")
@@ -189,13 +189,13 @@ celib = st.radio("Etes-vous célibataire ?", ['Oui', 'Non'])
 if celib == "Oui":
     m = 0
 else:
-    m = 1    
+    m = 1
 st.markdown("""---""")
 
 # #######################################################################################################################
 
 # 8. Voyagez vous avec vos frères et soeur ?
-fs =  st.number_input("Combien de vos frères et/ou soeurs voyagent avec vous d'habitude ?", step=1, min_value=0)
+fs = st.number_input("Combien de vos frères et/ou soeurs voyagent avec vous d'habitude ?", step=1, min_value=0)
 st.markdown("""---""")
 
 # #######################################################################################################################
@@ -203,14 +203,14 @@ st.markdown("""---""")
 # 9. Est ce que vous voyager avec vos enfants ? Si oui combien ?
 enfants = st.radio("Avez-vous des enfants ?", ["Non", "Oui"], index=0)
 if enfants == 'Oui':
-    nb_enfants = st.number_input("Combien voyagent avec vous ?", step=1, min_value=0) 
+    nb_enfants = st.number_input("Combien voyagent avec vous ?", step=1, min_value=0)
 else:
     nb_enfants = 0
-st.markdown("""---""")    
+st.markdown("""---""")
   
 # #######################################################################################################################
 
-# 10. D'ou etes vous partis ? 
+# 10. D'ou etes vous partis ?
 Port = st.selectbox("D'où souhaitez-vous partir ?", ["France", "Nord du Royaume-Uni", "Sud du Royaume-Uni"])
 if Port == "France":
     p = 1
@@ -230,15 +230,15 @@ elif Quand == "Quelques semaines avant le depart":
     f = X_train.loc[X_train['Pclass'] == c]['Fare'].quantile([0.5])
 elif Quand == "Au dernier moment":
     f = X_train.loc[X_train['Pclass'] == c]['Fare'].quantile([0.75])
-st.markdown("""---""")  
+st.markdown("""---""")
     
 # #######################################################################################################################
 
-# 12. Creation Dataframe 
+# 12. Creation Dataframe
 button = st.button("Prédiction")
 if name and button:
     try:
-        dataframe = pd.DataFrame(np.array([[c, s, age, (m+fs), nb_enfants, f, p]]), columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'])    
+        dataframe = pd.DataFrame(np.array([[c, s, age, (m+fs), nb_enfants, f, p]]), columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'])
         pred = random_forest.predict(dataframe)[0]
         
         if pred == 0:
@@ -252,7 +252,7 @@ if name and button:
         if s is None:
             st.warning("Veuillez sélectionner un genre")
 elif button:
-    st.warning("Veuillez renseigner votre nom")  
+    st.warning("Veuillez renseigner votre nom")
             
     
 # #######################################################################################################################
@@ -260,9 +260,3 @@ elif button:
 #                                          # === END OF FILE === #
 
 # #######################################################################################################################
-
-    
-    
-    
-    
-    

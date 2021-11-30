@@ -203,7 +203,7 @@ st.markdown("""---""")
 button = st._______("_______")
 if name and _______:
     try:
-        dataframe = pd.DataFrame(np.array([[c, s, age, (m+fs), nb_enfants, f, p]]), columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'])    
+        dataframe = pd.DataFrame(np.array([[c, s, age, (m+fs), nb_enfants, f, p]]), columns=['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'])
         pred = random_forest.predict(dataframe)[0]
         
         if pred == 0:
